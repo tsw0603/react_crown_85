@@ -1,0 +1,202 @@
+function App_85() {
+  return (
+    <div class="homepage">
+      <div class="directory-menu">
+        <div class="menu-item">
+          <img class="background-image" src="https://i.ibb.co/cvpntL1/hats.png" alt="" />
+          <a href="./hats.html" class="content">
+            <h1 class="title">HATS</h1>
+            <span class="subtitle">SHOP NOW</span>
+          </a>
+        </div>
+
+        <div class="menu-item">
+          <img class="background-image" src="https://i.ibb.co/px2tCc3/jackets.png" alt="" />
+          <a href="./jackets.html" class="content">
+            <h1 class="title">JACKETS</h1>
+            <span class="subtitle">SHOP NOW</span>
+          </a>
+        </div>
+        <div class="menu-item">
+          <img class="background-image" src="https://i.ibb.co/0jqHpnp/sneakers.png" alt="" />
+          <a href="./sneakers.html" class="content">
+            <h1 class="title">SNEAKERS</h1>
+            <span class="subtitle">SHOP NOW</span>
+          </a>
+        </div>
+        <div class="large menu-item">
+          <img class="background-image" src="https://i.ibb.co/GCCdy8t/womens.png" alt="" />
+          <a href="./womens.html" class="content">
+            <h1 class="title">WOMENS</h1>
+            <span class="subtitle">SHOP NOW</span>
+          </a>
+        </div>
+        <div class="large menu-item">
+          <img class="background-image" src="https://i.ibb.co/R70vBrQ/men.png" alt="" />
+          <a href="./mens.html" class="content">
+            <h1 class="title">MENS</h1>
+            <span class="subtitle">SHOP NOW</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+
+
+--------------------------------------
+
+Homepage_xx.js code
+
+import React from "react";
+import Directory_85 from "../componets/Directory_85";
+import './Homepage_85.scss';
+
+const Homepage_85 = () => {
+    return (
+        <div class="homepage">
+            <Directory_85 />
+        </div>
+    );
+};
+
+export default Homepage_85;
+
+----------------------------
+
+Directory_xx.js code
+
+import React from "react";
+import './Directory_85.scss';
+import MenuItem_85 from "./MenuItem_85";
+
+const Directory_85 = () => {
+    return (
+        <div>
+            <div class="directory-menu">
+                <MenuItem_85
+                    name='HATS'
+                    remoteUrl='https://i.ibb.co/cvpntL1/hats.png'
+                    size=''
+                />
+                <MenuItem_85
+                    name='JACKETS'
+                    remoteUrl='https://i.ibb.co/px2tCc3/jackets.png'
+                    size=''
+                />
+                <MenuItem_85
+                    name='SNEAKERS'
+                    remoteUrl='https://i.ibb.co/0jqHpnp/sneakers.png'
+                    size=''
+                />
+                <MenuItem_85
+                    name='WOMENS'
+                    remoteUrl='https://i.ibb.co/GCCdy8t/womens.png'
+                    size=''
+                />
+                <MenuItem_85
+                    name='MENS'
+                    remoteUrl='https://i.ibb.co/R70vBrQ/men.png'
+                    size=''
+                />
+            </div>
+        </div>
+    );
+};
+
+export default Directory_85;
+
+------------------------------------
+
+
+MenuItem_xx.js code
+
+import React from "react";
+import './MenuItem_85.scss';
+
+const MenuItem_85 = ({ name, remoteUrl, size }) => {
+    return (
+        <div className={`${size} menu-item`}>
+            <img className="background-image" src={remoteUrl} alt="" />
+            <a href="./hats.html" className="content">
+                <h1 className="title">{name}</h1>
+                <span className="subtitle">SHOP NOW</span>
+            </a>
+        </div>
+    )
+}
+
+export default MenuItem_85;
+
+----------------------------------
+
+JSON 陣列 (程式碼，非圖片 )
+
+const items = [
+    {
+        id: 1,
+        name: 'HATS',
+        remoteUrl: 'https://i.ibb.co/cvpntL1/hats.png',
+        size: '',
+    },
+    {
+        id: 2,
+        name: 'JACKETS',
+        remoteUrl: 'https://i.ibb.co/px2tCc3/jackets.png',
+        size: '',
+    },
+    {
+        id: 3,
+        name: 'SNEAKERS',
+        remoteUrl: 'https://i.ibb.co/0jqHpnp/sneakers.png',
+        size: '',
+    },
+    {
+        id: 4,
+        name: 'WOMENS',
+        remoteUrl: 'https://i.ibb.co/GCCdy8t/womens.png',
+        size: 'large',
+    },
+    {
+        id: 5,
+        name: 'MENS',
+        remoteUrl: 'https://i.ibb.co/R70vBrQ/men.png',
+        size: 'large',
+    },
+]
+
+export default items;
+
+------------------------
+
+Directory_xx.js code (程式碼，非圖片 )
+
+import React, { useState } from "react";
+import './Directory_85.scss';
+import items from "./menu-items-data";
+import MenuItem_85 from "./MenuItem_85";
+
+const Directory_85 = () => {
+    const [menuItems, setMenuItems] = useState(items);
+    console.log('menuItems', menuItems);
+    return (
+        <div>
+            <div className='directory-menu'>
+                {menuItems.map((item) => {
+                    const { id, name, remoteUrl, size } = item;
+                    return (
+                        <MenuItem_85
+                            id={id}
+                            name={name}
+                            remoteUrl={remoteUrl}
+                            size={size}
+                        />
+                    );
+                })}
+            </div>
+        </div>
+    );
+};
+
+export default Directory_85;
